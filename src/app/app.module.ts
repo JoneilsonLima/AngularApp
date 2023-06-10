@@ -16,7 +16,6 @@ import { FooterComponent } from './navegacao/footer/footer.component';
 import { SobreComponent } from './institucional/sobre/sobre.component';
 import { ContatoComponent } from './institucional/contato/contato.component';
 import { rootRouterConfig } from './app.router';
-import { DataBindingComponent } from './demos/data-binding/data-binding.component';
 import { ProdutoService } from './produtos/produtos.service';
 import { ListaProdutoComponent } from './produtos/lista-produto/lista-produto.component';
 
@@ -28,7 +27,6 @@ import { ListaProdutoComponent } from './produtos/lista-produto/lista-produto.co
     FooterComponent,
     SobreComponent,
     ContatoComponent,
-    DataBindingComponent,
     ListaProdutoComponent
   ],
   imports: [
