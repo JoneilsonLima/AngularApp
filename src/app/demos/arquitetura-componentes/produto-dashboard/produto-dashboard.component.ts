@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Produto } from '../models/prduto';
 
 @Component({
@@ -6,9 +6,11 @@ import { Produto } from '../models/prduto';
   templateUrl: './produto-dashboard.component.html',
   styles: []
 })
-export class ProdutoDashboardComponent implements OnInit {
+export class ProdutoDashboardComponent implements OnInit, AfterViewInit {
 
   produtos: Produto[];
+
+  @ViewChild('teste', {static: false}) mensagemTela: ElementRef;
 
   constructor() { }
 
@@ -59,9 +61,12 @@ export class ProdutoDashboardComponent implements OnInit {
     ]
   }
 
+  ngAfterViewInit(): void {
+      
+  }
+
   mudarStatus(produto: Produto): void {
     produto.ativo = !produto.ativo; 
-    console.log(produto)
   }
 
 }
