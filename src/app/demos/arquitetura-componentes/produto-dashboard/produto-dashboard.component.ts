@@ -1,5 +1,8 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { Produto } from '../models/prduto';
+import { Observable, fromEvent } from 'rxjs';
+import { produtoCountComponent } from '../componentes/produto-count.component';
+import { ProdutoDetalheComponent } from '../componentes/produto-card-detalhe.component';
 
 @Component({
   selector: 'app-produto-dashboard',
@@ -10,7 +13,10 @@ export class ProdutoDashboardComponent implements OnInit, AfterViewInit {
 
   produtos: Produto[];
 
-  @ViewChild('teste', {static: false}) mensagemTela: ElementRef;
+  @ViewChild(produtoCountComponent, {static: false}) contador: produtoCountComponent;
+  @ViewChild('teste', { static: false }) mensagemTela: ElementRef;
+
+  @ViewChildren(ProdutoDetalheComponent) produto: QueryList<ProdutoDetalheComponent>
 
   constructor() { }
 
@@ -62,7 +68,15 @@ export class ProdutoDashboardComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-      
+    console.log('Objeto do contador', this.contador.produtos);
+    let clickTexto: Observable<any> = fromEvent(this.mensagemTela.nativeElement, 'click');
+    clickTexto.subscribe(() => {
+      alert('Clicou no texto!')
+    })
+
+    this.produto.forEach((produto: ProdutoDetalheComponent) => {
+      console.log(produto.produto)
+    })
   }
 
   mudarStatus(produto: Produto): void {
