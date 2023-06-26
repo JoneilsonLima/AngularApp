@@ -12,7 +12,7 @@ import { Observable, fromEvent, merge } from 'rxjs';
 export class CadastroComponent implements OnInit, AfterContentInit {
 
   @ViewChildren(FormControlName, {read: ElementRef}) formInputElements: ElementRef[];
-  public teste: string;
+
   cadastroForm: FormGroup;
   usuario: IUsuario;
   formResult: string = '';
